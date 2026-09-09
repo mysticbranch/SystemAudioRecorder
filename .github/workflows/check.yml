@@ -8,7 +8,7 @@ jobs:
   checks:
     runs-on: macos-15
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Regression checks
         run: zsh Scripts/check.sh
       - name: Concurrent audio transport with sanitizers
