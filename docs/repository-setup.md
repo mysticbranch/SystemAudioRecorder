@@ -18,7 +18,11 @@ This file is the post-push setup checklist for `mysticbranch/SystemAudioRecorder
 6. After the first green Actions run, protect `main`: require the `Build and verify` check for pull requests and block force pushes/deletions. If the maintainer needs direct hotfixes, decide that explicitly rather than leaving the branch unintentionally open.
 7. Add a repository social preview image only after confirming the current app icon has publishable provenance. Do not use the carried-over prototype icon until then.
 
-## Before a public binary release
+## Free unsigned GitHub Releases
+
+GitHub Releases can host an unsigned DMG and SHA-256 checksum at no cost. Use `Scripts/build-dmg.sh` and follow [unsigned-releases.md](unsigned-releases.md). Keep every release clearly labelled as unsigned, not notarized, Apple Silicon only, and macOS 14.2+ until broader qualification exists. An unsigned DMG is appropriate for early adopters who can verify source and accept macOS's Open Anyway flow; it is not a production-ready claim.
+
+## Before a signed public binary release
 
 1. Complete every applicable manual item in [release-checklist.md](release-checklist.md), especially physical capture, audio listening, accessibility, and clean-machine installation.
 2. Obtain a Developer ID Application certificate and create a `notarytool` Keychain profile locally or in protected CI secrets. Never commit certificates, profiles, or Apple credentials.

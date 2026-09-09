@@ -27,5 +27,5 @@ fi
 mv "$app" 'dist/System Audio Recorder.app'
 print "Built: $PWD/dist/System Audio Recorder.app"
 if [[ "$identity" == "-" ]]; then
-    print 'Local ad-hoc build. Public downloads require Developer ID signing and notarization.'
+    print 'Local ad-hoc build. It can be shared as an unsigned download with a Gatekeeper warning; Developer ID signing and notarization provide the smoother distribution path.'
 fi

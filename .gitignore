@@ -9,3 +9,4 @@ xcuserdata/
 *.p8
 *.mobileprovision
 *.provisionprofile
+.release-notes.md

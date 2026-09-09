@@ -58,7 +58,20 @@ The initial [validation record](docs/validation.md) lists completed checks and r
 
 `Scripts/check.sh` runs a standalone Swift regression executable and configuration checks. It needs no XCTest installation. The checks use temporary generated audio and fake capture for UI state transitions; they do not record your microphone or system audio. macOS media-service access is required for AAC tests. `--core-only` runs storage, validation, and transport checks without codecs. `--ui-snapshots` additionally opens temporary test windows and writes UI screenshots into the printed temporary directory.
 
-## Distribution
+## Free downloads
+
+This project is free and open source. When a GitHub Release is available, it may include an unsigned Apple-Silicon DMG for macOS 14.2 or later. It is a convenience download, not an Apple-notarized product: macOS will ask the user to confirm it through **System Settings → Privacy & Security → Open Anyway** after they have verified its GitHub source and checksum.
+
+You can build the same app locally, or create a DMG yourself:
+
+```sh
+zsh Scripts/check.sh
+zsh Scripts/build-dmg.sh
+```
+
+The DMG and matching SHA-256 checksum are written under `dist/`. See [free unsigned releases](docs/unsigned-releases.md) for exact publishing, verification, user-install, and release-notes steps.
+
+## Signed distribution, later
 
 Public downloadable builds require an appropriate Developer ID identity and an existing notarytool Keychain profile:
 
@@ -67,7 +80,7 @@ CODE_SIGN_IDENTITY='Developer ID Application: YOUR NAME (TEAMID)' \
 NOTARY_PROFILE='your-existing-profile' zsh Scripts/release.sh
 ```
 
-This runs checks, builds with hardened runtime, notarizes, staples, verifies Gatekeeper acceptance, and produces `dist/SystemAudioRecorder.zip`. It does not upload a GitHub release. Signing does not implicitly enable App Sandbox. This first direct-distribution build uses the normal macOS privacy protections; an App Store/sandbox target is separate future work.
+This optional paid-membership path runs checks, builds with hardened runtime, notarizes, staples, verifies Gatekeeper acceptance, and produces `dist/SystemAudioRecorder.zip`. It does not upload a GitHub release. Signing does not implicitly enable App Sandbox. This first direct-distribution build uses the normal macOS privacy protections; an App Store/sandbox target is separate future work.
 
 ## Privacy
 
