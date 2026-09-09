@@ -1,0 +1,50 @@
+name: Bug report
+description: Report a reproducible problem without sharing private audio.
+title: "bug: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not attach real recordings, transcripts, credentials, or private paths. Use a synthetic sample or describe the audio shape instead.
+  - type: textarea
+    id: summary
+    attributes:
+      label: What happened?
+      description: State the expected and actual behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Start a system-only recording
+        2. Pause and resume
+        3. Save as FLAC
+    validations:
+      required: true
+  - type: input
+    id: macos
+    attributes:
+      label: macOS version and Mac model
+      placeholder: "macOS 15.0, Apple Silicon"
+    validations:
+      required: true
+  - type: dropdown
+    id: input
+    attributes:
+      label: Recording input
+      options:
+        - System audio only
+        - System audio plus built-in microphone
+        - System audio plus USB microphone
+        - System audio plus Bluetooth microphone
+        - Playback, export, trim, cleanup, or library only
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Error text or safe diagnostic details
+      description: Remove names, paths, tokens, and any audio content first.

@@ -1,0 +1,26 @@
+name: Build and verify
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  checks:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Regression checks
+        run: zsh Scripts/check.sh
+      - name: Concurrent audio transport with sanitizers
+        run: zsh Scripts/check-transport.sh
+      - name: Pinned denoiser source and sanitizers
+        run: zsh Scripts/check-rnnoise.sh
+      - name: Local app bundle
+        run: zsh Scripts/build-app.sh
+      - name: Archive build
+        run: ditto -c -k --keepParent 'dist/System Audio Recorder.app' dist/local-build.zip
+      - uses: actions/upload-artifact@v4
+        with:
+          name: SystemAudioRecorder-local-unsigned-build
+          path: dist/local-build.zip
+          retention-days: 7

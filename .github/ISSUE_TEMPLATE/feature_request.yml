@@ -1,0 +1,27 @@
+name: Feature request
+description: Suggest an improvement to the recorder.
+title: "feature: "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem to solve
+      description: Describe the recording workflow or limitation.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior
+      description: Include expected controls, output, and any macOS-specific constraints you know about.
+    validations:
+      required: true
+  - type: dropdown
+    id: contribution
+    attributes:
+      label: Would you like to contribute this?
+      options:
+        - I can help test it
+        - I can help implement it
+        - I am only suggesting it
